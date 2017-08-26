@@ -300,7 +300,7 @@ namespace PioneerTechSystem.DAL
                     selectedEmployee.AddressLine2 = personalDetailsReader.GetString(personalDetailsReader.GetOrdinal("AddressLine2"));
                     selectedEmployee.AddressState = personalDetailsReader.GetString(personalDetailsReader.GetOrdinal("AddressState"));
                     selectedEmployee.AddressCountry = personalDetailsReader.GetString(personalDetailsReader.GetOrdinal("AddressCountry"));
-                    selectedEmployee.AddressZipCode = personalDetailsReader.GetString(personalDetailsReader.GetOrdinal("AddressState"));
+                    selectedEmployee.AddressZipCode = personalDetailsReader.GetString(personalDetailsReader.GetOrdinal("AddressZipCode"));
                     selectedEmployee.HomeCountry = personalDetailsReader.GetString(personalDetailsReader.GetOrdinal("HomeCountry"));
                 }
                 personalDetailsReader.Close();

@@ -65,3 +65,12 @@ body {
 .table-style {
     border:solid;
 }
+
+.text-danger
+{
+    color: red;
+}
+.return-message{
+    color:#1c306a;
+    font-weight: bold;
+}

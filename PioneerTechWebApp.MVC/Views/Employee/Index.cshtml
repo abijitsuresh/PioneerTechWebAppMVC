@@ -4,7 +4,7 @@
     ViewBag.Title = "Employee List";
 }
 
-<h2>Index</h2>
+<h2>Employee List</h2>
 
 <p>
     @Html.ActionLink("Add New Employee", "Create")
@@ -24,68 +24,69 @@
             @Html.DisplayNameFor(model => model.MobileNumber)
         </th>
         @*<th>
-            @Html.DisplayNameFor(model => model.AlternateMobileNumber)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AddressLine1)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AddressLine2)
-        </th>*@
+                @Html.DisplayNameFor(model => model.AlternateMobileNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AddressLine1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AddressLine2)
+            </th>*@
         <th>
             @Html.DisplayNameFor(model => model.AddressState)
         </th>
         @*<th>
-        @Html.DisplayNameFor(model => model.AddressCountry)
-    </th>
-    <th>
-        @Html.DisplayNameFor(model => model.AddressZipCode)
-    </th>
-    <th>
-        @Html.DisplayNameFor(model => model.HomeCountry)
-    </th>*@
+                @Html.DisplayNameFor(model => model.AddressCountry)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AddressZipCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HomeCountry)
+            </th>*@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EmailID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MobileNumber)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.AlternateMobileNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AddressLine1)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AddressLine2)
-        </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.AddressState)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.AddressCountry)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AddressZipCode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HomeCountry)
-        </td>*@
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.EmployeeID }) 
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmailID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MobileNumber)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.AlternateMobileNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AddressLine1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AddressLine2)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.AddressState)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.AddressCountry)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AddressZipCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HomeCountry)
+                </td>*@
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.EmployeeID })
+            </td>
+        </tr>
+    }
 
 </table>

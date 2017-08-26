@@ -10,11 +10,10 @@ namespace PioneerTechWebApp.MVC.Controllers
 {
     public class EmployeeController : Controller
     {
+        private EmployeeDataAccessLayer employeeDataAccessLayer = new EmployeeDataAccessLayer();
         // GET: Employee
         public ActionResult Index()
         {
-            EmployeeDataAccessLayer employeeDataAccessLayer = new EmployeeDataAccessLayer();
-
             //Employee firstEmployee = new Employee()
             //{
             //    FirstName = "Abijit",
@@ -39,12 +38,6 @@ namespace PioneerTechWebApp.MVC.Controllers
             return View(employeeList);
         }
 
-        // GET: Employee/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
         // GET: Employee/Create
         public ActionResult Create()
         {
@@ -57,24 +50,24 @@ namespace PioneerTechWebApp.MVC.Controllers
         {
             try
             {
-                
-                //Employee employee = new Employee() {
-                //    FirstName = collection[1],
-                //    LastName = collection[2],
-                //    EmailID = collection[3],
-                //    MobileNumber = collection[4],
-                //    AlternateMobileNumber = collection[5],
-                //    AddressLine1 = collection[6],
-                //    AddressLine2 = collection[7],
-                //    AddressState = collection[8],
-                //    AddressCountry = collection[9],
-                //    AddressZipCode = collection[10],
-                //    HomeCountry = collection[11]
-                //};
-                Employee employee = new Employee();
-                UpdateModel(employee);
-                EmployeeDataAccessLayer employeeDataAccessLayer = new EmployeeDataAccessLayer();
-                employeeDataAccessLayer.SaveEmployeePersonalDetails(employee);
+
+                Employee personalDetail = new Employee()
+                {
+                    FirstName = collection[1],
+                    LastName = collection[2],
+                    EmailID = collection[3],
+                    MobileNumber = collection[4],
+                    AlternateMobileNumber = collection[5],
+                    AddressLine1 = collection[6],
+                    AddressLine2 = collection[7],
+                    AddressState = collection[8],
+                    AddressCountry = collection[9],
+                    AddressZipCode = collection[10],
+                    HomeCountry = collection[11]
+                };
+                //Employee personalDetail = new Employee();
+                //UpdateModel(personalDetail);
+                employeeDataAccessLayer.SaveEmployeePersonalDetails(personalDetail);
 
                 return RedirectToAction("Index");
             }
@@ -87,9 +80,8 @@ namespace PioneerTechWebApp.MVC.Controllers
         // GET: Employee/Edit/5
         public ActionResult Edit(int id)
         {
-            EmployeeDataAccessLayer employeeDataAccessLayer = new EmployeeDataAccessLayer();
-            Employee employee = employeeDataAccessLayer.GetPersonalData(id.ToString());
-            return View(employee);
+            Employee personalDetail = employeeDataAccessLayer.GetPersonalData(id.ToString());
+            return View(personalDetail);
         }
 
         // POST: Employee/Edit/5
@@ -98,9 +90,8 @@ namespace PioneerTechWebApp.MVC.Controllers
         {
             try
             {
-                EmployeeDataAccessLayer employeeDataAccessLayer = new EmployeeDataAccessLayer();
                 //Employee employee = new Employee();
-                Employee employee = new Employee()
+                Employee personalDetail = new Employee()
                 {
                     EmployeeID = id,
                     FirstName = collection[2],
@@ -117,29 +108,7 @@ namespace PioneerTechWebApp.MVC.Controllers
                 };
 
                 //UpdateModel(employee);
-                employeeDataAccessLayer.SaveEmployeePersonalDetails(employee);
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Employee/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Employee/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
+                employeeDataAccessLayer.SaveEmployeePersonalDetails(personalDetail);
 
                 return RedirectToAction("Index");
             }

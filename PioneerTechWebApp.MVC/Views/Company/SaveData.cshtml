@@ -1,0 +1,78 @@
+﻿@model PioneerTechSystem.Models.Company
+
+@{
+    ViewBag.Title = "Company Details";
+}
+
+<h2>Employee Company Details</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>You can save a new employee company information or update existing employee details here.</h4>
+        If you want to add a completely new employee inforation, please enter data in @Html.ActionLink("Employee Details", "Create", "Employee")  page to continue.
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <span class="return-message">
+            @ViewBag.ReturnMessage
+        </span>
+
+        <table>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.EmployeeID, "Employee ID", htmlAttributes: new { @class = "control-label col-md-2" })
+                </td>
+                <td>
+                    @Html.DropDownList("EmployeeID", null, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.EmployeeID, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.CompanyName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    </td><td>
+                        @Html.EditorFor(model => model.CompanyName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CompanyName, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.CompanyContactNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.CompanyContactNumber, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CompanyContactNumber, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.CompanyLocation, htmlAttributes: new { @class = "control-label col-md-2" })
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.CompanyLocation, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CompanyLocation, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.CompanyWebsite, htmlAttributes: new { @class = "control-label col-md-2" })
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.CompanyWebsite, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CompanyWebsite, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr><td></td>
+                <td>
+                        <input type="submit" value="Save/Update" class="btn btn-default" />
+                </td>
+            </tr>
+        </table>
+</div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
