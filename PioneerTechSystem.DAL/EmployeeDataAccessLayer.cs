@@ -474,18 +474,24 @@ namespace PioneerTechSystem.DAL
         }
 
         // To Display values        
-        public List<Employee> ViewEmployeeData(string employeeID)
+        public List<Employee> ViewEmployeeData()
         {
             try
             {
                 sqlConnection = OpenConnection();
                 employeeData = new List<Employee>();
-                string getPersonalInformationQuery = "SELECT FirstName, LastName, EmailID, MobileNumber, AddressState as State FROM EmployeePersonalDetails where EmployeeID = '" + employeeID + "'";
+                string getPersonalInformationQuery = "SELECT * FROM EmployeePersonalDetails";
                 sqlCommand = new SqlCommand(getPersonalInformationQuery, sqlConnection);
                 SqlDataReader employeeDetailsReader = sqlCommand.ExecuteReader();
                 while (employeeDetailsReader.Read())
                 {
-                    employeeData.Add(new Employee() { FirstName = employeeDetailsReader.GetString(employeeDetailsReader.GetOrdinal("FirstName")), LastName = employeeDetailsReader.GetString(employeeDetailsReader.GetOrdinal("LastName")), EmailID = employeeDetailsReader.GetString(employeeDetailsReader.GetOrdinal("EmailID")), MobileNumber = employeeDetailsReader.GetString(employeeDetailsReader.GetOrdinal("MobileNumber")), AddressState = employeeDetailsReader.GetString(employeeDetailsReader.GetOrdinal("LastName")) });
+                    employeeData.Add(new Employee() {
+                        EmployeeID = employeeDetailsReader.GetInt32(employeeDetailsReader.GetOrdinal("EmployeeID")),
+                        FirstName = employeeDetailsReader.GetString(employeeDetailsReader.GetOrdinal("FirstName")),
+                        LastName = employeeDetailsReader.GetString(employeeDetailsReader.GetOrdinal("LastName")),
+                        EmailID = employeeDetailsReader.GetString(employeeDetailsReader.GetOrdinal("EmailID")),
+                        MobileNumber = employeeDetailsReader.GetString(employeeDetailsReader.GetOrdinal("MobileNumber")),
+                        AddressState = employeeDetailsReader.GetString(employeeDetailsReader.GetOrdinal("AddressState")) });
                 }
                 employeeDetailsReader.Close();
                 return employeeData;
